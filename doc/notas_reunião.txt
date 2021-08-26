@@ -1,0 +1,91 @@
+1. Reestruturar o repositório, seguindo as recomendações dadas em aula:
+
+
+src\ - código-fonte do projeto (sistema desenvolvido)
+src\data\img - imagens utilizadas pelo sistema
+
+examples\ - exemplos de "trechos de funcionalidades
+	register\ - código com método/função que efetua o registro da imagem
+	register\data - imagem que é utilizada nos testes de registro (usar as imagens que o professor vai enviar da FATEC).
+	difference\ - código com método que efetua a diferença (compara) as imagens.
+	diference\data - imagens comparadas (usar a mesma imagem da FATEC mas tirando ou acrescentando algo de maneira manual)
+
+doc\ 
+	relatorio_tecnico.docx
+
+	
+Obs 1: O Google Earth Pro permite que você obtenha séries históricas de imagens. Começar com imagens daqui caso tenhamos um sistema
+que consiga efetuar uma comparação.
+
+Obs 2: Criar o exemplo que faz o registro das imagens "ideais" informadas.
+
+
+
+Desenvolvimento do sistema para a internet:
+Interface 1. Cadastro, visualização, exclusão e alteração dos pontos/imagens de referência (tie points) das imagens que serão comparadas.
+
+
+Interface 2. Carga de duas imagens que deverão ser comparadas.
+	Aqui o sistema busca a localização dos tie points nas duas imagens a serem comparadas, daí tem-se a seguinte equação
+	tie point 1 - imagem 1 (pedaço da imagem) -  (x1, y1) 
+	tie point 1 - imagem 2 (imagem maior) - (x2, y2).
+		x1 = x2 + a  :.     a = x1 - x2
+		y1 = y2 + b :.	    b = y1 - y2
+(0,0) (150, 180)
+(1,30) (151, 210)
+OBS: Esse caso é o caso mais simples de transformação (deslocamento) que não apresenta alterações de escala ou rotação.
+Estou escolhendo esse para demonstrar a dificuldade REAL que existe no processo de comparação.
+
+
+
+	Para comparar os pontos, para o pixel (x1,y1) da imagem menor, utilizar o pixel (x2-a, y2-b), com a e b calculados.
+	Gerar uma nova imagem (binária) que terá intensidade 0 caso a diferença entre os pixels seja 0 (ou menor do que um certo limite) e 1 (255) caso a diferença
+	exista (ou seja maior do que um certo limite). Na comparação das imagens, formar uma imagem em níveis de cinza primeiro, transformando:
+	[r,g,b] =  [(r+g+b)/3, (r+g+b)/3, (r+g+b)/3]
+
+
+
+Interface 3. Resultado da comparação com uma imagem representando o resultado da comparação (intensidade 0 para pixel igual e
+intensidade 1 para pixel diferente).
+
+
+
+
+
+1. INTRODUÇÃO
+Descrever a necessidade de comparação de imagens (uso ilegal de terra), questões ambientais etc.
+Enfatizar a relevância do desenvolvimento de um sistema dessa natureza.
+
+
+2. DESENVOLVIMENTO
+2.1. FUNDAMENTOS DE PROCESSAMENTO DE IMAGENS.
+	Explicar como é definida uma imagem digital (coordenas espaciais, níveis de intensidade, etc).
+	Descrever as etapas de:
+	Aquisição
+	Realce e Filtragem
+	Segmentação
+	Representação e descrição
+	Reconhecimento de objetos.
+	
+	Explicar que a comparação de duas imagens requer: 
+	1 . Registro
+	2. Casamento de padrões/pixels
+
+
+2.2. Descrever o funcionamento do sistema
+
+Baseado do sistema a ser desenvolvido.
+Etapas:
+	Cadastro dos pontos de referência (pedaços de imagem)
+	Identificação dos pedados de imagem nas duas imagens a serem comparadas
+	Comparação pixel a pixel (considerando níveis de cinza) das duas imagens
+	Exibição do resultado da comparação.
+
+
+3. CONSIDERAÇÕES FINAIS
+3.1. Ilustrar um ou dois resultados da comparação
+3.2. Discutir as limitações do que foi mostrado
+3.3. Sugerir trabalhos futuros.
+
+
+	
