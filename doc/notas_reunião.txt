@@ -74,7 +74,7 @@ Enfatizar a relevância do desenvolvimento de um sistema dessa natureza.
 
 2.2. Descrever o funcionamento do sistema
 
-Baseado do sistema a ser desenvolvido.
+Baseado no sistema a ser desenvolvido.
 Etapas:
 	Cadastro dos pontos de referência (pedaços de imagem)
 	Identificação dos pedados de imagem nas duas imagens a serem comparadas
