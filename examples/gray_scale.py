@@ -1,7 +1,8 @@
 import copy
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-# import numpy as np
+import numpy as np
+from PIL import Image
 
 
 IMAGE_PATH = '../src/data/img/'
@@ -14,6 +15,7 @@ full_image_grayscale = copy.deepcopy(full_image)
 boeing_image_test = mpimg.imread(f'{IMAGE_PATH}test2.jpg')
 boeing_image_test_grayscale = copy.deepcopy(boeing_image_test)
 
+
 def img_rows_and_columns(img: mpimg.imread):
     print('Reading the number of rows and columns... \n')
     number_rows = len(img)
@@ -22,15 +24,7 @@ def img_rows_and_columns(img: mpimg.imread):
     return (number_rows, number_columns)
 
 
-def plot_image(f_number: int, img, title: str):
-    plt.figure(f_number)
-    imgplot = plt.imshow(img)
-    plt.title(title)
-    plt.grid()
-    plt.show()
-
-
-def gray_scale_level(img):
+def gray_scale_level(img, plot_img_number):
     rows_and_columns = img_rows_and_columns(img)
     number_rows = rows_and_columns[0]
     number_columns = rows_and_columns[1]
@@ -41,8 +35,40 @@ def gray_scale_level(img):
             new_gray_level = (x[0] + x[1] + x[2]) / 3
             for k in range(3):
                 img[row][column][k] = int(new_gray_level)
+    plot_image(plot_img_number, img, 'Grayscale image')
 
-    plot_image(1, img, 'Grayscale image')
 
-# plot_image(0, boeing_image_test, 'Original image')
-gray_scale_level(boeing_image_test_grayscale)
+def plot_image(f_number: int, img, title: str):
+    imgplot = plt.imshow(img, cmap=plt.get_cmap('gray'), vmin=0, vmax=1)
+    plt.figure(f_number)
+    plt.title(title)
+    plt.grid()
+    plt.show()
+
+
+def rgb2gray_v1(img_name):
+    """
+    converte a imagem para escala de cinza
+    usa função do PIL
+    """
+    return Image.open(img_name).convert('L')
+
+
+def rgb2gray_v2(rgb: mpimg.imread):
+    """
+    converte a imagem para escala de cinza
+    formula => 0.2989 R + 0.5870 G + 0.1140 B
+    https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
+    """
+    return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
+
+
+def main():
+    # plot_image(0, full_image_grayscale, 'full - Original image')
+    # plot_image(1, template_image_grayscale, 'template - Original image')
+    # gray_scale_level(full_image_grayscale, 2)
+    # gray_scale_level(template_image_grayscale, 3)
+    rgb_img_test = rgb2gray_v1(f'{IMAGE_PATH}full.png')
+    plot_image(0, rgb_img_test, 'Grayscale test')
+
+main()
