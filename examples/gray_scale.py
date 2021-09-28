@@ -9,7 +9,7 @@ IMAGE_PATH = '../src/data/img/'
 template_img = mpimg.imread(f'{IMAGE_PATH}template.png')
 full_image = mpimg.imread(f'{IMAGE_PATH}full.png')
 
-template_image_grayscale = copy.deepcopy(template_img)
+template_img_grayscale = copy.deepcopy(template_img)
 full_image_grayscale = copy.deepcopy(full_image)
 
 boeing_image_test = mpimg.imread(f'{IMAGE_PATH}test2.jpg')
@@ -46,7 +46,7 @@ def plot_image(f_number: int, img, title: str):
     plt.show()
 
 
-def rgb2gray_v1(img_name):
+def rgb2gray(img_name):
     """
     converte a imagem para escala de cinza
     usa função do PIL
@@ -54,21 +54,12 @@ def rgb2gray_v1(img_name):
     return Image.open(img_name).convert('L')
 
 
-def rgb2gray_v2(rgb: mpimg.imread):
-    """
-    converte a imagem para escala de cinza
-    formula => 0.2989 R + 0.5870 G + 0.1140 B
-    https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
-    """
-    return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
-
-
 def main():
     # plot_image(0, full_image_grayscale, 'full - Original image')
-    # plot_image(1, template_image_grayscale, 'template - Original image')
-    # gray_scale_level(full_image_grayscale, 2)
-    # gray_scale_level(template_image_grayscale, 3)
-    rgb_img_test = rgb2gray_v1(f'{IMAGE_PATH}full.png')
+    # plot_image(1, template_img_grayscale, 'template - Original image')
+    gray_scale_level(full_image_grayscale, 2)
+    gray_scale_level(template_img_grayscale, 3)
+    rgb_img_test = rgb2gray(f'{IMAGE_PATH}full.png')
     plot_image(0, rgb_img_test, 'Grayscale test')
 
 main()
