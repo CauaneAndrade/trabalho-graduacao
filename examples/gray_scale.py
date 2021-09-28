@@ -58,7 +58,7 @@ def main():
     # plot_image(0, full_image_grayscale, 'full - Original image')
     # plot_image(1, template_img_grayscale, 'template - Original image')
     gray_scale_level(full_image_grayscale, 2)
-    gray_scale_level(template_img_grayscale, 3)
+    # gray_scale_level(template_img_grayscale, 3)
     rgb_img_test = rgb2gray(f'{IMAGE_PATH}full.png')
     plot_image(0, rgb_img_test, 'Grayscale test')
 

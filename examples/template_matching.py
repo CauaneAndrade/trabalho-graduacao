@@ -19,7 +19,7 @@ def match_template(template_img, source_img):
             sum_absolute_diff[row].append(0)
             for x in range(template_xy['rows']):
                 for y in range(template_xy['columns']):
-                    sum_absolute_diff[row][col] += abs(template_img[x][y][0] - source_img[x+row_disp][y+column_disp][0])
+                    sum_absolute_diff[row][col] += abs(template_img[x][y][0] - source_img[x+row][y+col][0])
 
     min_error = sum_absolute_diff[0][0]
     [delta_x, delta_y] = (0 , 0)
