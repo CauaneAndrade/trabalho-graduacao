@@ -24,19 +24,30 @@ Obs 2: Criar o exemplo que faz o registro das imagens "ideais" informadas.
 Desenvolvimento do sistema para a internet:
 Interface 1. Cadastro, visualização, exclusão e alteração dos pontos/imagens de referência (tie points) das imagens que serão comparadas.
 
-
 Interface 2. Carga de duas imagens que deverão ser comparadas.
 	Aqui o sistema busca a localização dos tie points nas duas imagens a serem comparadas, daí tem-se a seguinte equação
 	tie point 1 - imagem 1 (pedaço da imagem) -  (x1, y1) 
 	tie point 1 - imagem 2 (imagem maior) - (x2, y2).
 		x1 = x2 + a  :.     a = x1 - x2
 		y1 = y2 + b :.	    b = y1 - y2
-(0,0) (150, 180)
-(1,30) (151, 210)
+
+(0, 0) (150, 180)
+(1, 30) (151, 210)
+
+demontrar resolver problema básico
+de forma automatizada
+
+para performance: poderia ser paralelizado
+
+tem um sis web
+que resolve comparação de imagem
+enderecar problema real, automatizar
+prova de conceito
+
+
+
 OBS: Esse caso é o caso mais simples de transformação (deslocamento) que não apresenta alterações de escala ou rotação.
 Estou escolhendo esse para demonstrar a dificuldade REAL que existe no processo de comparação.
-
-
 
 	Para comparar os pontos, para o pixel (x1,y1) da imagem menor, utilizar o pixel (x2-a, y2-b), com a e b calculados.
 	Gerar uma nova imagem (binária) que terá intensidade 0 caso a diferença entre os pixels seja 0 (ou menor do que um certo limite) e 1 (255) caso a diferença

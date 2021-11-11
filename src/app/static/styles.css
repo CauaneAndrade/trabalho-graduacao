@@ -1,0 +1,41 @@
+body {
+    padding-left: 15px;
+}
+
+.space-1 {
+    height: 1vh;
+}
+
+.space-2 {
+    height: 3vh;
+}
+
+.space-3 {
+    height: 4vh;
+}
+
+img[id*="image-tie-point"] {
+    width: auto;
+    height: auto;
+    max-width: 60vh;
+    max-height: 60vh;
+    padding-top: 1vh;
+    visibility: hidden;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
